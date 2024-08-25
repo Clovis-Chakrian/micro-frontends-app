@@ -1,5 +1,12 @@
 import { h, createApp } from 'vue';
 import singleSpaVue from 'single-spa-vue';
+import PrimeVue from 'primevue/config';
+import Button from 'primevue/button';
+import InputText from 'primevue/inputtext';
+import InputMask from 'primevue/inputmask';
+
+//in main.js
+import 'primevue/resources/themes/aura-light-green/theme.css'
 
 import App from './App.vue';
 import router from './router';
@@ -21,7 +28,12 @@ const vueLifecycles = singleSpaVue({
     },
   },
   handleInstance(app) {
+    app.use(PrimeVue);
     app.use(router);
+
+    app.component('Button', Button);
+    app.component('InputText', InputText);
+    app.component('InputMask', InputMask);
   },
 });
 

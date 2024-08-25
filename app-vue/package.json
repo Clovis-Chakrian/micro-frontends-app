@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service --port 8082 serve",
     "build": "vue-cli-service build",
     "serve:standalone": "vue-cli-service serve --mode standalone"
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "primevue": "^3.53.0",
     "single-spa-vue": "^2.1.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"

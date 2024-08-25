@@ -13,6 +13,7 @@
     browsers. More information at https://github.com/single-spa/create-single-spa/issues/112
   -->
   <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css">  
 
   <!--
     This CSP allows any SSL-enabled host and for arbitrary eval(), but you should limit these directives further to increase your app's security.
@@ -38,7 +39,8 @@
       "imports": {
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
         "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
-        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js"
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
+        "primeflexcss": "https://unpkg.com/primeflex@latest/primeflex.css"
       }
     }
   </script>
@@ -52,9 +54,10 @@
     {
       "imports": {
         "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-        "@mfe/root-config": "//localhost:9000/mfe-root-config.js",
-        "@mfe/app-react": "//localhost:8080/mfe-app-react.js",
-        "@mfe/app-vue": "//localhost:8081/js/app.js"
+        "@mfe/root-config": "//localhost:8080/mfe-root-config.js",
+        "@mfe/app-react": "//localhost:8081/mfe-app-react.js",
+        "@mfe/app-vue": "//localhost:8082/js/app.js",
+        "@mfe/libs": "//localhost:9000/mfe-libs.js"
       }
     }
   </script>

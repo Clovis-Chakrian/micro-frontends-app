@@ -1,10 +1,7 @@
 {
   "extends": [
-    "react-important-stuff",
-    "plugin:prettier/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:testing-library/react",
-    "plugin:jest/all"
+    "important-stuff",
+    "plugin:prettier/recommended"
   ],
   "parser": "@babel/eslint-parser",
   "parserOptions": {

@@ -18,14 +18,20 @@
   -->
 
   <main>
-    <route path="/welcome">
+    <!-- <route path="/welcome">
       <application name="@single-spa/welcome"></application>
-    </route>
-    <route default>
+    </route> -->
+    <route path="/" exact>
       <application name="@mfe/app-react"></application>
     </route>
-    <route path="/vue">
+    <route path="/create">
       <application name="@mfe/app-vue"></application>
+    </route>
+    <route path="/update">
+      <application name="@mfe/app-vue"></application>
+    </route>
+    <route default>
+      <h1>Unknown product page</h1>
     </route>
   </main>
 </single-spa-router>
