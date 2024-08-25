@@ -7,7 +7,7 @@ const routes = [
     component: () => import('../views/CreateContact.vue')
   },
   {
-    path: '/update',
+    path: '/update/:contactId',
     name: 'Update_Contact',
     component: () => import('../views/UpdateContact.vue')
   }

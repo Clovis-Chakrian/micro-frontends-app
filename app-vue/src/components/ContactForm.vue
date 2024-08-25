@@ -1,6 +1,6 @@
 <template>
   <main class="p-fluid flex flex-column align-items-center">
-    <h1>Novo Contato</h1>
+    <h1>{{acao == 'ATUALIZAR' ? 'Atualizar' : 'Criar' }} Contato</h1>
     <div class="p-fluid formgrid grid w-6">
       <div class="field col-12 md:col-6">
         <label for="nome">Nome</label>
@@ -31,17 +31,20 @@
     <div class="flex align-items-center gap-3">
       <Button
         class="flex align-items-center justify-content-center bg-gray-200 border-gray-200 text-black-alpha-90"
+        @click="cancelar"
       >
         Cancelar
       </Button>
-      <Button class="flex align-items-center justify-content-center">
-        Salvar
+      <Button @click="save" class="flex align-items-center justify-content-center">
+        {{acao == 'ATUALIZAR' ? 'Atualizar' : 'Salvar'}}
       </Button>
     </div>
   </main>
 </template>
 
 <script>
+import * as singleSpa from 'single-spa';
+
 export default {
   name: "ContactForm",
 
@@ -49,7 +52,13 @@ export default {
     contact: {
       type: Object,
     },
+
+    acao: {
+      type: String
+    }
   },
+
+  emits: ["save"],
 
   data() {
     return {
@@ -69,9 +78,13 @@ export default {
       };
     },
 
-    salvar() {
-      this.$emit("salvar", this.contactDto);
+    save() {
+      this.$emit("save", this.contactDto);
     },
+
+    cancelar() {
+      singleSpa.navigateToUrl('/')
+    }
   },
 
   watch: {
@@ -79,7 +92,5 @@ export default {
       this.fillForm();
     },
   },
-
-  emits: ["salvar"],
 };
 </script>

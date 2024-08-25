@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const httpClient = axios.create({
-  baseURL: "https://",
+  baseURL: "https://agenda-backend-bluetechnology.onrender.com/api",
 });

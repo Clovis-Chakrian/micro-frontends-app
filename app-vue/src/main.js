@@ -6,7 +6,7 @@ import InputText from 'primevue/inputtext';
 import InputMask from 'primevue/inputmask';
 
 //in main.js
-import 'primevue/resources/themes/aura-light-green/theme.css'
+import 'primevue/resources/themes/aura-light-cyan/theme.css'
 
 import App from './App.vue';
 import router from './router';
