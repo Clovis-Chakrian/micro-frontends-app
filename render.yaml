@@ -16,8 +16,7 @@ services:
   - type: web
     name: app-react
     env: docker
-    dockerfilePath: "./app-react/Dockerfile"
-    buildContext: "./app-react"
+    dockerfilePath: ./app-react/Dockerfile
     ports:
       - port: 8080
         internal: 8080
