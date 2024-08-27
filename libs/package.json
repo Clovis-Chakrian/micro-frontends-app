@@ -1,7 +1,7 @@
 {
   "name": "@mfe/libs",
   "scripts": {
-    "start": "webpack serve --port 9000",
+    "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
     "build": "concurrently npm:build:*",
     "build:webpack": "webpack --mode=production",

@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  root:
+    build:
+      context: ./root
+      dockerfile: Dockerfile
+    ports:
+      - "8080"  # Expondo apenas o root
+    networks:
+      - spa-network
+
+  app-react:
+    build:
+      context: ./app-react
+      dockerfile: Dockerfile
+    ports:
+      - "8080"
+    networks:
+      - spa-network
+
+  app-vue:
+    build:
+      context: ./app-vue
+      dockerfile: Dockerfile
+    ports:
+      - "8080"
+    networks:
+      - spa-network
+
+  libs:
+    build:
+      context: ./libs
+      dockerfile: Dockerfile
+    ports:
+      - "8080"
+    networks:
+      - spa-network
+  
+  nginx:
+    image: nginx
+    ports:
+      - "8080:80"
+    networks:
+      - spa-network
+    depends_on:
+      - app-react
+      - app-vue
+      - libs
+      - root
+    volumes:
+      - "./default.conf:/etc/nginx/conf.d/default.conf"
+
+
+networks:
+  spa-network:
+    driver: bridge
+# version: "3.8"
+
+# services:
+#   root:
+#     build:
+#       context: ./root
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8080"  # Expondo apenas o root
+#     # depends_on:
+#     #   - app-react
+#     #   - app-vue
+#     #   - libs
+#     networks:
+#       - spa-network
+
+#   nginx:
+#     image: nginx
+#     ports:
+#       - "8080:80"
+#     networks:
+#       - spa-network
+#     volumes:
+#       - "./default.conf:/etc/nginx/conf.d/default.conf"
+
+# networks:
+#   spa-network:
+#     driver: bridge

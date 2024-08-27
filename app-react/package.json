@@ -1,7 +1,7 @@
 {
   "name": "@mfe/app-react",
   "scripts": {
-    "start": "webpack serve --port 8081",
+    "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
     "build": "concurrently npm:build:*",
     "build:webpack": "webpack --mode=production",

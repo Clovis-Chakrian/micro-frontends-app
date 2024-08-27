@@ -19,8 +19,8 @@
     This CSP allows any SSL-enabled host and for arbitrary eval(), but you should limit these directives further to increase your app's security.
     Learn more about CSP policies at https://content-security-policy.com/#directive
   -->
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
+  <!-- <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';"> -->
   <meta name="importmap-type" content="systemjs-importmap" />
   <!-- If you wish to turn off import-map-overrides for specific environments (prod), uncomment the line below -->
   <!-- More info at https://github.com/joeldenning/import-map-overrides/blob/master/docs/configuration.md#domain-list -->
@@ -54,15 +54,27 @@
     {
       "imports": {
         "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-        "@mfe/root-config": "//localhost:8080/mfe-root-config.js",
-        "@mfe/app-react": "//localhost:8081/mfe-app-react.js",
-        "@mfe/app-vue": "//localhost:8082/js/app.js",
-        "@mfe/libs": "//localhost:9000/mfe-libs.js"
+        "@mfe/root-config": "http://localhost:8080/mfe/root",
+        "@mfe/app-react": "http://localhost:8080/mfe/app-react",
+        "@mfe/app-vue": "http://localhost:8080/mfe/app-vue",
+        "@mfe/libs": "http://localhost:8080/mfe/libs"
       }
     }
   </script>
-    <% } %>
+    <% } else { %>
+      <script type="systemjs-importmap">
+        {
+          "imports": {
+            "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
+            "@mfe/root-config": "http://localhost:8080/mfe/root",
+            "@mfe/app-react": "http://localhost:8080/mfe/app-react",
+            "@mfe/app-vue": "http://localhost:8080/mfe/app-vue",
+            "@mfe/libs": "http://localhost:8080/mfe/libs"
+          }
+        }
+      </script>
 
+    <% } %>
       <!--
     If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded
     Learn more about why at https://single-spa.js.org/docs/ecosystem-angular/#zonejs
@@ -86,7 +98,6 @@
   </noscript>
   <script>
     System.import('@mfe/root-config');
-    System.import('@mfe/libs');
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
 </body>

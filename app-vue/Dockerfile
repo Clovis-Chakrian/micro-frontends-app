@@ -1,14 +1,13 @@
+# app-vue/Dockerfile
 FROM node:20-alpine
 
-RUN npm install -g http-server
-
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY package*.json ./
+RUN npm install
 
 COPY . .
 
-RUN npm install && npm run build
+RUN npm run build
 
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+CMD ["npm", "run", "serve"]

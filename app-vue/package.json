@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service --port 8082 serve",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "serve:standalone": "vue-cli-service serve --mode standalone"
   },
