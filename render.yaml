@@ -30,10 +30,7 @@ services:
   - type: web
     name: nginx
     env: docker
-    image: nginx
-    ports:
-      - port: 8080
-        internal: 80
+    image: docker.io/library/nginx:latest
     plan: free
     # volumes:
     #   - path: ./default.conf
