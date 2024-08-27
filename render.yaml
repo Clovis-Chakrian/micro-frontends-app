@@ -30,7 +30,7 @@ services:
   - type: web
     name: nginx
     env: docker
-    image: docker.io/library/nginx:latest
+    image: "docker.io/library/nginx:latest"
     plan: free
     # volumes:
     #   - path: ./default.conf
