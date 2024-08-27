@@ -2,11 +2,7 @@ services:
   - type: web
     name: root
     env: docker
-    dockerfilePath: "./root/Dockerfile"
-    buildContext: "./root"
-    ports:
-      - port: 8080
-        internal: 8080
+    dockerfilePath: ./root/Dockerfile
     plan: free
     routes:
       - type: redirect
@@ -17,27 +13,18 @@ services:
     name: app-react
     env: docker
     dockerfilePath: ./app-react/Dockerfile
-    hostport: 80:8080
     plan: free
 
   - type: web
     name: app-vue
     env: docker
     dockerfilePath: ./app-vue/Dockerfile
-    buildContext: ./app-vue
-    ports:
-      - port: 8080
-        internal: 8080
     plan: free
 
   - type: web
     name: libs
     env: docker
-    dockerfilePath: "./libs/Dockerfile"
-    buildContext: ./libs
-    ports:
-      - port: 8080
-        internal: 8080
+    dockerfilePath: ./libs/Dockerfile
     plan: free
 
   - type: web
@@ -48,11 +35,11 @@ services:
       - port: 8080
         internal: 80
     plan: free
-    volumes:
-      - path: ./default.conf
-        mountPath: /etc/nginx/conf.d/default.conf
-    dependsOn:
-      - root
-      - app-react
-      - app-vue
-      - libs
+    # volumes:
+    #   - path: ./default.conf
+    #     mountPath: /etc/nginx/conf.d/default.conf
+    # dependsOn:
+    #   - root
+    #   - app-react
+    #   - app-vue
+    #   - libs
