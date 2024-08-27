@@ -17,9 +17,7 @@ services:
     name: app-react
     env: docker
     dockerfilePath: ./app-react/Dockerfile
-    ports:
-      - port: 8080
-        internal: 8080
+    hostport: 80:8080
     plan: free
 
   - type: web
